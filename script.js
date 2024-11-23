@@ -135,7 +135,9 @@ allcheckBtn.forEach((checkbox) => {
 
 
 generateBtn.addEventListener("click",()=>{  
-    if(passwordLength <= 0){
+
+
+    if(passwordLength == 0){
         return;
     }
     if(passwordLength < checkcount){
@@ -158,15 +160,17 @@ generateBtn.addEventListener("click",()=>{
     }
 
     for(let i=0;i<funArr.length;i++){
-        password = funArr[i]();
+        password += funArr[i]();
     }
+
     for (let i=0;i<passwordLength-funArr.length; i++){
-        let randindex=getRndinteger(0,funArr.length);
-        password+=funArr[randindex]();
+        let ranindex=getRndinteger(0,funArr.length);
+        password+=funArr[ranindex]();
     }
+
 
     password=shufflepassword(Array.from(password));
-
+    
     passwordDisplay.value=password;
     calStrength();
 
